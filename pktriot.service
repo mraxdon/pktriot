@@ -1,0 +1,15 @@
+[Unit]
+Description=pktriot
+After=network.target
+
+[Service]
+User=pktriot
+Group=pktriot
+EnvironmentFile=
+ExecStart=/usr/bin/pktriot --config /etc/pktriot/config.json start
+ExecReload=/bin/kill -HUP $MAINPID
+KillMode=process
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
